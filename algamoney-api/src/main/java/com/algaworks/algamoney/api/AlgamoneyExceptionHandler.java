@@ -49,9 +49,6 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 			String mensagemDesenvolvedor = fieldError.toString();
 			erros.add(new Erro(mensagemUsuario, mensagemDesenvolvedor));
 		}
-		
-		
-		
 		return erros;
 	}
 	public static class Erro{
