@@ -10,6 +10,7 @@ import com.algaworks.algamoney.api.model.Lancamento;
 import com.algaworks.algamoney.api.model.Pessoa;
 import com.algaworks.algamoney.api.repository.LancamentoRepository;
 import com.algaworks.algamoney.api.repository.PessoaRepository;
+import com.algaworks.algamoney.api.repository.filter.LancamentoFilter;
 import com.algaworks.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
 
 @Service
@@ -39,6 +40,10 @@ public class LancamentoService {
 			throw new PessoaInexistenteOuInativaException();
 		}
 		return lancamentoRepository.save(lancamento);
+	}
+
+	public List<Lancamento> filtrar(LancamentoFilter lancamentoFilter) {
+		return lancamentoRepository.filtrar(lancamentoFilter);
 	}
 
 }

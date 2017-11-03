@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.algaworks.algamoney.api.AlgamoneyExceptionHandler.Erro;
 import com.algaworks.algamoney.api.event.RecursoCriadoEvent;
 import com.algaworks.algamoney.api.model.Lancamento;
+import com.algaworks.algamoney.api.repository.filter.LancamentoFilter;
 import com.algaworks.algamoney.api.service.LancamentoService;
 import com.algaworks.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
 
@@ -40,8 +41,8 @@ public class LancamantoResource {
 	private MessageSource messageSource;
 
 	@GetMapping
-	public List<Lancamento> listar() {
-		return lancamentoService.listar();
+	public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
+		return lancamentoService.filtrar(lancamentoFilter);
 	}
 
 	@GetMapping("/{codigo}")
