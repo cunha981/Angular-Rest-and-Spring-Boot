@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.algaworks.algamoney.api.model.Lancamento;
@@ -42,8 +44,12 @@ public class LancamentoService {
 		return lancamentoRepository.save(lancamento);
 	}
 
-	public List<Lancamento> filtrar(LancamentoFilter lancamentoFilter) {
-		return lancamentoRepository.filtrar(lancamentoFilter);
+	public Page<Lancamento> filtrar(LancamentoFilter lancamentoFilter, Pageable pageable) {
+		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
+	}
+
+	public void remover(Long codigo) {
+		lancamentoRepository.delete(codigo);
 	}
 
 }
